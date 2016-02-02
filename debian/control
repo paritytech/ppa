@@ -1,0 +1,22 @@
+Source: parity
+Section: science
+Priority: extra
+Maintainer: arkpar (Buildserver key) <admin@ethcore.io>
+Build-Depends: debhelper (>= 8.0.0),
+               build-essential,
+               software-properties-common,
+               git,
+               curl,
+               wget,
+               librocksdb
+Standards-Version: 3.9.5
+Homepage: http://ethcore.io
+Vcs-Git: git://github.com/ethcore/parity.git
+Vcs-Browser: https://github.com/ethcore/parity
+
+Package: parity
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends},
+         librocksdb
+Description: Ethereum network client by Ethcore
+

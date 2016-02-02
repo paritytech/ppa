@@ -1,0 +1,6 @@
+parity (0.0.9-1) trusty; urgency=low
+
+  * Initial release.
+
+ -- Ethcore <admin@ethcore.io>  Mon, 01 Feb 2014 14:50:20 +0000
+
