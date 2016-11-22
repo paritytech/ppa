@@ -15,6 +15,7 @@ mainrepo=parity
 now=$(date +"%Y%m%d")
 project="parity"
 ppabranch=master
+paritybranch=stable
 codebranch=${paritybranch}
 pparepo=ethcore/ppa
 if [ -z "$codebranch" ]; then
@@ -35,16 +36,16 @@ rocksdbppa="http://ppa.launchpad.net/giskou/librocksdb/ubuntu"
 git clone git@github.com:ethcore/${mainrepo}.git -b ${codebranch} --recursive
 # create source tarball"
 cd ${mainrepo}
-version=`grep -oP "version = \"?\K[0-9.]+(?=\")"? Cargo.toml`
+version=`grep -oP "^version = \"?\K[0-9.]+(?=\")"? Cargo.toml | head -1`
 revision=`git rev-parse --short HEAD`
 
-if [ "${codebranch}" = "release" ]; then 
-    	debversion=${version}~${distribution}
+#if [ "${codebranch}" = "beta" ]; then 
+    	#debversion=${version}~${distribution}
     	debversion=${version}
-    else
-    	debversion=${version}-SNAPSHOT-${BUILD_NUMBER}-${now}-${revision}~${distribution}
-    	debversion=${version}-SNAPSHOT-${BUILD_NUMBER}-${now}-${revision}
-fi
+#    else
+    	#debversion=${version}-SNAPSHOT-${BUILD_NUMBER}-${now}-${revision}~${distribution}
+#    	debversion=${version}-SNAPSHOT-${BUILD_NUMBER}-${now}-${revision}
+#fi
 
 echo debversion=${debversion}
 

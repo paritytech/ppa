@@ -16,7 +16,6 @@ Vcs-Browser: https://github.com/ethcore/parity
 
 Package: parity
 Architecture: any
-Depends: ${misc:Depends}, ${shlibs:Depends},
-         librocksdb
+Depends: ${misc:Depends}
 Description: Ethereum network client by Ethcore
 

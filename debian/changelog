@@ -1,3 +1,9 @@
+parity (1.1.0-0) UNRELEASED; urgency=medium
+
+  * git build of 734b96c
+
+ -- arkady <build@ethcore.io>  Mon, 16 May 2016 20:22:47 +0200
+
 parity (0.0.9-1) trusty; urgency=low
 
   * Initial release.

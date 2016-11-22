@@ -15,20 +15,20 @@
 
 # This has to be exported to make some magic below work.
 export DH_OPTIONS
-export PATH := ~/.multirust/toolchains/nightly/bin:$(PATH)
-export RUSTC := ~/.multirust/toolchains/nightly/bin/rustc
+export PATH := ~/.multirust/toolchains/stable/bin:$(PATH)
+export RUSTC := ~/.multirust/toolchains/stable/bin/rustc
 
 %:
 	dh $@
 
 override_dh_auto_configure:
 	#curl -sf https://raw.githubusercontent.com/brson/multirust/master/blastoff.sh | sh -s -- --yes
-	#multirust update nightly && multirust default nightly
-	#curl -sSf https://static.rust-lang.org/rustup.sh | sh -s -- --channel=nightly
-	git clone --recursive https://github.com/brson/multirust && cd multirust && git submodule update --init && ./build.sh && ./install.sh --prefix=~/rust && ~/rust/bin/multirust update nightly && ~/rust/bin/multirust default nightly
+	#multirust update stable && multirust default stable
+	#curl -sSf https://static.rust-lang.org/rustup.sh | sh -s -- --channel=stable
+	git clone --recursive https://github.com/brson/multirust && cd multirust && git submodule update --init && ./build.sh && ./install.sh --prefix=~/rust && ~/rust/bin/multirust update stable && ~/rust/bin/multirust default 1.12.0
 
 override_dh_auto_install: 
-	env RUSTC=$(HOME)/.multirust/toolchains/nightly/bin/rustc ~/.multirust/toolchains/nightly/bin/cargo build --release --verbose
+	env RUSTC=$(HOME)/.multirust/toolchains/stable/bin/rustc ~/.multirust/toolchains/stable/bin/cargo build --release --verbose
 	
 override_dh_auto_test:
 	#cargo test --release
